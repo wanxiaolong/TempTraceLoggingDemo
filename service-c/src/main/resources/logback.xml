@@ -1,0 +1,15 @@
+<configuration>
+    <appender name="maskAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="com.demo.trace.logging.MaskPatternLayout">
+                <maskPattern>\"email\"\s*:\"(.*?)\"</maskPattern>
+                <maskPattern>\"phoneNumber\"\s*:\"(.*?)\"</maskPattern>
+                <maskPattern>\"homeAddress\"\s*:\"(.*?)\"</maskPattern>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %logger{36} - %m%n%rootException</pattern>
+            </layout>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="maskAppender"/>
+    </root>
+</configuration>
